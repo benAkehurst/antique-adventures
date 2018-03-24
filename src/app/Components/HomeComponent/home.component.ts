@@ -17,7 +17,12 @@ import { ArrayType } from '@angular/compiler/src/output/output_ast';
 
 export class HomeComponent implements OnInit {
 
-constructor(public dataService: DataService, private router: Router) { }
+constructor(public dataService: DataService, private router: Router) {
+  const user = this.getStorageItems();
+  if (user.status === false) {
+    this.router.navigate(['/login']);
+  }
+}
 
 errors: any;
 isDataLoaded: Boolean = false;

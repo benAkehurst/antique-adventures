@@ -42,8 +42,9 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['/home']);
     }
 
-    public goToProfileLink() {
-        this.router.navigate(['/profile']);
+    public logout() {
+        this.clearUser();
+        this.router.navigate(['/login']);
     }
 
     public goToLoginLink() {
@@ -52,6 +53,10 @@ export class HeaderComponent implements OnInit {
 
     public goToRegisterLink() {
         this.router.navigate(['/register']);
+    }
+
+    public clearUser() {
+        localStorage.clear();
     }
 
     public getStorageItems() {

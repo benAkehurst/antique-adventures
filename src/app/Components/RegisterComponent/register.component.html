@@ -10,6 +10,7 @@
     </p>
     <p>
       <input type="password" placeholder="Password" required [(ngModel)]="dataService.User.password" [ngModelOptions]="{standalone: true}">
+      <label>Your password needs to be 6 or more characters.</label>
     </p>
     <p>
       <input type="submit" value="Register" (click)="registerUser()">

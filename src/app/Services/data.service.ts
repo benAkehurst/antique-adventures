@@ -6,9 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import UserDataModel from '../DataModels/UserDataModel';
-import RouteDataModel from '../DataModels/RouteDataModel';
-import PlaceDataModel from '../DataModels/PlaceDataModel';
-import RouteOptionsDataModel from '../DataModels/RouteOptionsDataModel';
+import AntiqueDataModel from '../DataModels/AntiqueDataModel';
 
 @Injectable()
 export class DataService {
@@ -16,15 +14,11 @@ export class DataService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private localUrl = 'http://localhost:3000/';
   User: UserDataModel;
-  Route: RouteDataModel;
-  Place: PlaceDataModel;
-  RouteOptions: RouteOptionsDataModel;
+  Antique: AntiqueDataModel;
 
   constructor(private http: Http) {
     this.User = new UserDataModel();
-    this.Route = new RouteDataModel();
-    this.Place = new PlaceDataModel();
-    this.RouteOptions = new RouteOptionsDataModel();
+    this.Antique = new AntiqueDataModel();
   }
 
   //
@@ -50,12 +44,6 @@ export class DataService {
       .map(res => res.json());
     }
 
-    sendContactMessage(messageObj) {
-      return this.http
-      .post(this.localUrl + 'sendContactUsMessage', { data: messageObj}, {headers: this.headers})
-      .map(res => res.json());
-    }
-
     getUserProfile() {
       const userId = this.getUserId();
       const dataObj = {
@@ -65,79 +53,63 @@ export class DataService {
         .post(this.localUrl + 'getProfile', {data: dataObj}, { headers: this.headers })
         .map(res => res.json());
     }
-
-    deleteRoute(routeId) {
-      const userId = this.getUserId();
-      // console.log(routeId);
-      const dataObj = {
-        user: userId,
-        route: routeId
-      };
-      // console.log(dataObj);
-      return this.http
-        .post(this.localUrl + 'deleteRoute', { data: dataObj }, { headers: this.headers })
-        .map(res => res.json());
-    }
   //
   // ──────────────────────────────────────────────────────────── USER REQUESTS ─────
   //
 
   //
-  // ─── HOME REQUESTS ──────────────────────────────────────────────────────────────
+  // ─── ANTIQUE REQUESTS ───────────────────────────────────────────────────────────
   //
-    /**
-    * GETS 20 PLACES FROM GOOGLE PLACES API TO BUILD ROUTE
-    */
-    getAllPlaces() {
+    getAllAntiques() {
       return this.http
-      .post(this.localUrl + 'routeOptions', { data: this.RouteOptions }, { headers: this.headers })
-      .map(res => res.json());
+        .get(this.localUrl + 'getAllAntiques', { headers: this.headers })
+        .map(res => res.json());
     }
 
-    /**
-    * BUILDS A URL FOR A PLACE IMAGE FROM THE SERVER
-    * @param placeId
-    */
-    getPlaceImage(placeId) {
-      return this.http
-      .post(this.localUrl + 'getPlaceImage', { data: placeId }, { headers: this.headers })
-      .map(res => res.json());
-    }
-  //
-  // ──────────────────────────────────────────────────────────── HOME REQUESTS ─────
-  //
-
-  //
-  // ─── HEADER REQUESTS ────────────────────────────────────────────────────────────
-  //
-    /**
-    * GETS THE WEATHER FOR THE USERS CITY VIA IP ADDRESS
-    */
-    getCurrentWeather() {
-      return this.http
-      .post(this.localUrl + 'currentWeather', { headers: this.headers })
-      .map(res => res.json());
-    }
-  //
-  // ────────────────────────────────────────────────────────── HEADER REQUESTS ─────
-  //
-
-
-  //
-  // ─── MAP REQUESTS ───────────────────────────────────────────────────────────────
-  //
-  saveRoute() {
-    const userId = this.getUserId();
+    getAntique(antiqueId) {
     const dataObj = {
-      user: userId,
-      route: this.Route
-    };
-    return this.http
-      .post(this.localUrl + 'saveRoute', { data: dataObj }, { headers: this.headers })
-      .map(res => res.json());
-  }
+        antique: antiqueId
+      };
+      return this.http
+        .post(this.localUrl + 'getAntique', {data: dataObj}, { headers: this.headers })
+        .map(res => res.json());
+    }
+
+    saveAntique() {
+      const userId = this.getUserId();
+      const dataObj = {
+        user: userId,
+        antique: this.Antique
+      };
+      return this.http
+        .post(this.localUrl + 'saveNewAntique', { data: dataObj }, { headers: this.headers })
+        .map(res => res.json());
+    }
+
+    editAntique() {
+      const userId = this.getUserId();
+      const dataObj = {
+        user: userId,
+        antique: this.Antique
+      };
+      return this.http
+        .post(this.localUrl + 'editAntique', { data: dataObj }, { headers: this.headers })
+        .map(res => res.json());
+    }
+
+    deleteAntique(antiqueId) {
+      const userId = this.getUserId();
+      const dataObj = {
+        user: userId,
+        antique: antiqueId
+      };
+      // console.log(dataObj);
+      return this.http
+        .post(this.localUrl + 'deleteAntique', { data: dataObj }, { headers: this.headers })
+        .map(res => res.json());
+    }
   //
-  // ───────────────────────────────────────────────────────────── MAP REQUESTS ─────
+  // ───────────────────────────────────────────────────────── ANTIQUE REQUESTS ─────
   //
 
   public getUserId() {

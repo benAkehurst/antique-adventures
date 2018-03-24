@@ -1,8 +1,6 @@
 <mat-toolbar color="primary">
   <div class="main-buttons-container float-left">
-    <span class="navbar-brand header-link main-link" (click)="goToHomeLink()">Munch</span>
-    <span class="nav-item header-link navbar-brand map-link" (click)="goToMapLink()">Map</span>
-    <span class="nav-item header-link about-link" (click)="goToAboutPage()">About</span>
+    <span class="navbar-brand header-link main-link" (click)="goToHomeLink()">Antique Adventures</span>
   </div>
   <div class="fill-remaining-space"></div>
   <div class="login-register-div float-right">
@@ -10,5 +8,4 @@
     <span class="nav-item header-link navbar-brand login-link" (click)="goToLoginLink()" *ngIf="!loggedIn">Login</span>
     <span class="nav-item header-link navbar-brand register-link" (click)="goToRegisterLink()" *ngIf="!loggedIn">Register</span>
   </div>
-  <app-weather></app-weather>
 </mat-toolbar>

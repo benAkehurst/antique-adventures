@@ -178,7 +178,16 @@ app.get("/getAllAntiques", function (req, res) {
  * @param {*} next
  */
 app.post("/getAntique", function(req, res, next){
-
+    Antique.findOneById({ _id: req.data.antique})
+        .exec(function (err, user) {
+            if (err) {
+                console.log("Error: " + " " + err);
+                res.send({ success: false, message: err });
+            } else {
+                console.log(user);
+                res.send({ success: true, data: antiques })
+            }
+        })
 });
 
 /**

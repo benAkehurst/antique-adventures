@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="login">
+  <h2 class="login-header">Register</h2>
+  <form class="login-container">
+    <p>
+      <input type="text" placeholder="Name" required [(ngModel)]="dataService.User.name" [ngModelOptions]="{standalone: true}">
+    </p>
+    <p>
+      <input type="email" placeholder="Email" required [(ngModel)]="dataService.User.email" [ngModelOptions]="{standalone: true}">
+    </p>
+    <p>
+      <input type="password" placeholder="Password" required [(ngModel)]="dataService.User.password" [ngModelOptions]="{standalone: true}">
+    </p>
+    <div class="why-register-container">
+      <span class="why-text">When you register you'll have these awesome benefits!</span>
+      <ul class="reason-list">
+        <li class="why-item">The ability to save routes</li>
+        <li class="why-item">Change and edit your route search parameters</li>
+        <li class="why-item">View all your saved routes and share them with friends</li>
+      </ul>
+    </div>
+    <div class="privacy-container">
+      <span class="privacy-text">We guarantee 100% privacy. Your information will not be shared with anybody.</span>
+      <br>
+      <br>
+      <span class="privacy-link" (click)="goToPrivacyLink()">By registering, you conform to our privicy policy.</span>
+    </div>
+    <p>
+      <input type="submit" value="Register" (click)="registerUser()">
+    </p>
+  </form>
+  <p class="link-to-register">Already have an account?
+    <span (click)="goToLogin()"> Login Here.</span>
+  </p>
+</div>

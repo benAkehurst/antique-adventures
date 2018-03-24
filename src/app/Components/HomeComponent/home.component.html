@@ -1,0 +1,41 @@
+<mat-spinner *ngIf="isDataLoaded == false"></mat-spinner>
+<div class="app-container" *ngIf="isDataLoaded == true">
+  <app-header></app-header>
+  <ng4-loading-spinner> </ng4-loading-spinner>
+  <div class="container-fluid">
+    <div class="route-view">
+      <mat-card>
+        <mat-card-title>Route Options</mat-card-title>
+        <mat-card-content>
+          <div class="buttons-cont-one">
+            <button mat-button class="route-button" (click)="getAllPlaces()">New Route</button>
+            <button mat-button class="route-button" (click)="showRouteOnMap()">Show Me the Route</button>
+          </div>
+          <div class="userPlace place-card">
+            <mat-card>Marker A: Your Location</mat-card>
+          </div>
+          <div class="placeOne place-card">
+            <mat-card (click)="viewPlace(routeOption.locationOne)">Marker B: {{routeOption.locationOne?.name}}</mat-card>
+          </div>
+          <div class="placeTwo place-card">
+            <mat-card (click)="viewPlace(routeOption.locationTwo)">Marker C: {{routeOption.locationTwo?.name}}</mat-card>
+          </div>
+          <div class="placeThree place-card">
+            <mat-card (click)="viewPlace(routeOption.locationThree)">Marker D: {{routeOption.locationThree?.name}}</mat-card>
+          </div>
+        </mat-card-content>
+        <div class="buttons-cont-two">
+          <button mat-button class="route-button" (click)="saveRoute()" *ngIf="this.loggedIn === true">Save this Route</button>
+        </div>
+      </mat-card>
+    </div>
+    <div class="map-container">
+      <app-map></app-map>
+    </div>
+    <mat-card *ngIf="viewPlaceClicked">
+      <h1>{{this.chosenPlace?.name}}</h1>
+      <img class="selected-place-image" src="{{this.placeImageUrl}}">
+      <button mat-button class="route-button" (click)="savePlace()" *ngIf="this.loggedIn === true">Save this Place</button>
+    </mat-card>
+  </div>
+</div>

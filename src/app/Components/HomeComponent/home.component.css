@@ -1,0 +1,64 @@
+mat-spinner {
+  margin-left: 25%;
+  margin-top: 25%;
+}
+
+app-weather {
+  height: 300px;;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+mat-card {
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+mat-toolbar-row {
+  justify-content: space-between;
+}
+
+.done {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+}
+
+.place-card {
+  cursor: pointer;
+}
+
+.fill-remaining-space {
+  flex: 0 1 auto;
+}
+
+.buttons-cont-one,
+.buttons-cont-two {
+  margin: 5px 0 5px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+}
+
+.route-button {
+  margin: 0px 10px 0 10px;
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+  background-color: #03A9F4;
+
+  color: white;
+}
+
+.selected-place-image{
+  width: 100%;
+}

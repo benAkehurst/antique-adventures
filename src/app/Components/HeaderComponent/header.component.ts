@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
     constructor(private dataService: DataService, private router: Router) { }
     loggedIn: Boolean = false;
+    name: String;
 
     ngOnInit() {
 
@@ -33,6 +34,7 @@ export class HeaderComponent implements OnInit {
         }
         if (userObj.status === true ) {
             this.loggedIn = true;
+            this.name = userObj.name;
         }
     }
 
@@ -55,12 +57,13 @@ export class HeaderComponent implements OnInit {
     public getStorageItems() {
         const token = localStorage.getItem('token');
         const id = localStorage.getItem('id');
-        let userObj = { status: false };
+        const name = localStorage.getItem('name');
+        let userObj = { status: false, name: null };
         if (token == null && id == null ) {
-            return userObj = { status: false };
+            return userObj = { status: false, name: null };
         }
-        if (token && id ) {
-            return userObj = {status: true};
+        if (token && id && name ) {
+            return userObj = { status: true, name: name };
         }
     }
 

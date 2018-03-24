@@ -24,16 +24,9 @@ var User = new Schema({
     name: {
         type: String
     },
-    image: {
-        type: String
-    },
     createdAntiques: [{
         type: Schema.Types.ObjectId,
         ref: "RouteModel"
-    }],
-    editedAntiques: [{
-        type: Schema.Types.ObjectId,
-        ref: "PlaceModel"
     }]
 }, {
         timestamps: true

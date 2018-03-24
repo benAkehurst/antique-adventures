@@ -14,28 +14,50 @@ var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
 var Antique = new Schema({
-    email: {
-        type: String,
-        unique: true
-    },
-    password: {
-        type: String,
-        unique: true
-    },
     name: {
         type: String
     },
     image: {
         type: String
     },
-    createdAntiques: [{
+    description: {
+        type: String
+    },
+    condition: {
+        type: String
+    },
+    width: {
+        type: String
+    },
+    height: {
+        type: String
+    },
+    depth: {
+        type: String
+    },
+    material: {
+        type: String
+    },
+    location: {
+        type: String
+    },
+    provenance: {
+        type: String
+    },
+    provenanceImage: {
+        type: String
+    },
+    createdBy: [{
         type: Schema.Types.ObjectId,
         ref: "UserModel"
     }],
-    editedAntiques: [{
+    editedBy: [{
         type: Schema.Types.ObjectId,
         ref: "UserModel"
-    }]
+    }],
+    status: {
+        type: String
+    }
 }, {
         timestamps: true
     });

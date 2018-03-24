@@ -17,12 +17,12 @@ import { HeaderComponent } from '../HeaderComponent/header.component';
 import { RegisterComponent } from '../RegisterComponent/register.component';
 import { LoginComponent } from '../LoginComponent/login.component';
 import { HomeComponent } from '../HomeComponent/home.component';
+import { NewAntiqueComponent } from '../NewAntiqueComponent/newAntique.component';
 
 // Services
 import { DataService } from '../../Services/data.service';
 
 // Extras
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 
 
@@ -32,14 +32,14 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    NewAntiqueComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    Ng4LoadingSpinnerModule.forRoot(),
     MaterialModule,
     BrowserAnimationsModule
   ],

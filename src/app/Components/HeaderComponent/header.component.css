@@ -11,10 +11,6 @@
     margin-left: 15px;
 }
 
-app-weather {
-    cursor: pointer;
-}
-
 .fill-remaining-space {
   flex: 1 1 auto;
 }

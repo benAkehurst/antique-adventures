@@ -4,7 +4,7 @@
   </div>
   <div class="fill-remaining-space"></div>
   <div class="login-register-div float-right">
-    <span class="nav-item header-link navbar-brand profile-link" (click)="goToProfileLink()" *ngIf="loggedIn">Profile</span>
+    <span class="nav-item navbar-brand profile-link" *ngIf="loggedIn">Hi {{name}}, welcome back.</span>
     <span class="nav-item header-link navbar-brand login-link" (click)="goToLoginLink()" *ngIf="!loggedIn">Login</span>
     <span class="nav-item header-link navbar-brand register-link" (click)="goToRegisterLink()" *ngIf="!loggedIn">Register</span>
   </div>

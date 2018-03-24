@@ -1,5 +1,4 @@
-import RouteDataModel from './RouteDataModel';
-import PlaceDataModel from './PlaceDataModel';
+import AntiqueDataModel from './AntiqueDataModel';
 
 class UserDataModel {
     _id: string;
@@ -7,8 +6,7 @@ class UserDataModel {
     email: String = '';
     password: String = '';
     image: String = '';
-    savedRoutes: RouteDataModel[] = [];
-    savedPlaces: PlaceDataModel[] = [];
+    createdAntiques: AntiqueDataModel[] = [];
 }
 
 export default UserDataModel;

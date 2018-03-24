@@ -17,10 +17,8 @@ import { ArrayType } from '@angular/compiler/src/output/output_ast';
 
 export class HomeComponent implements OnInit {
 
-constructor(public dataService: DataService,
-            private router: Router,
-            private spinnerService: Ng4LoadingSpinnerService,
-            @Inject(ChangeDetectorRef) private changeDetectorRef: ChangeDetectorRef) { }
+constructor(public dataService: DataService, private router: Router) { }
+
 errors: any;
 isDataLoaded: Boolean = false;
 loggedIn: Boolean = false;

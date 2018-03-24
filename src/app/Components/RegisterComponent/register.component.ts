@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
     errors: any;
     jwt: string;
     id: string;
+    name: string;
 
     ngOnInit() {
     }
@@ -27,6 +28,7 @@ export class RegisterComponent implements OnInit {
             this.dataService.User = response;
             this.jwt = response.token;
             this.id = response.obj._id;
+            this.name = response.obj.name;
             this.remeberUser();
         },
             error => {
@@ -49,6 +51,7 @@ export class RegisterComponent implements OnInit {
     public remeberUser() {
         localStorage.setItem('token', this.jwt);
         localStorage.setItem('id', this.id);
+        localStorage.setItem('name', this.name);
     }
 
     public openSwal(Title, text) {

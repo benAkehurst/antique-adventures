@@ -31,6 +31,10 @@ loggedIn: Boolean = false;
 ngOnInit() {
 }
 
+public addNewAntique() {
+  this.router.navigate(['/newAntique']);
+}
+
 // public getAllPlaces() {
 //   this.dataService.getAllPlaces().subscribe(places => {
 //       this.places = places.results;

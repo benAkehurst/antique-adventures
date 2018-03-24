@@ -23,11 +23,7 @@ var User = new Schema({
     },
     name: {
         type: String
-    },
-    createdAntiques: [{
-        type: Schema.Types.ObjectId,
-        ref: "RouteModel"
-    }]
+    }
 }, {
         timestamps: true
     });

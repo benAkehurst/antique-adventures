@@ -198,32 +198,30 @@ app.post("/getAntique", function(req, res, next){
  */
 app.post("/saveNewAntique", function (req, res, next) {
     const data = req.body.data;
-    const userId = req.body.data.user;
-    const objectId = mongoose.Types.ObjectId(userId);
-
-    const newRoute = new Route({
-        locationOne: data.route.locationOne,
-        locationTwo: data.route.locationTwo,
-        locationThree: data.route.locationThree,
-        user: objectId
+    const newAntique = new Antique({
+        user: data.user,
+        name: data.antique.name,
+        image: data.antique.image,
+        description: data.antique.description,
+        condition: data.antique.condition,
+        width: data.antique.width,
+        height: data.antique.height,
+        depth: data.antique.depth,
+        material: data.antique.material,
+        location: data.antique.location,
+        provenance: data.antique.provenance,
+        provenanceImage: data.antique.provenanceImage,
+        status: data.antique.status,
     });
-    newRoute.save(function (err, route) {
+    newAntique.save(function (err, antique) {
         if (err) {
             return next(err);
+            res.send(err);
         }
-        User.findByIdAndUpdate(
-            userId,
-            { $push: { savedRoutes: route._id } },
-            function (err, user) {
-                if (err) {
-                    return next(err);
-                }
-                res.send({
-                    success: true,
-                    message: 'route saved'
-                });
-            }
-        );
+        res.send({
+            success: true,
+            message: 'antique saved'
+        });
     });
 });
 

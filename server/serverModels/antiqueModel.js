@@ -47,14 +47,6 @@ var Antique = new Schema({
     provenanceImage: {
         type: String
     },
-    createdBy: [{
-        type: Schema.Types.ObjectId,
-        ref: "UserModel"
-    }],
-    editedBy: [{
-        type: Schema.Types.ObjectId,
-        ref: "UserModel"
-    }],
     status: {
         type: String
     }

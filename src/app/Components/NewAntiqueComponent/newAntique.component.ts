@@ -26,6 +26,18 @@ export class NewAntiqueComponent implements OnInit {
     ngOnInit() {
     }
 
+    public saveAntique() {
+        // console.log('route saved');
+        this.dataService.saveAntique().subscribe(response => {
+            // console.log(response);
+            this.openSwal('Success', 'Your New Antique was saved!');
+        },
+            error => {
+            this.errors = error;
+            this.openSwal('Error', 'Sorry, we couldn\'t save right now');
+            });
+    }
+
     // public getAllPlaces() {
     //   this.dataService.getAllPlaces().subscribe(places => {
     //       this.places = places.results;

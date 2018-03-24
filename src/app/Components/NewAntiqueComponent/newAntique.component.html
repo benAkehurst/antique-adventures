@@ -1,2 +1,44 @@
 <app-header></app-header>
-<h1>New Antique</h1>
+<div class="container">
+    <h1>Add a New Antique</h1>
+    <div class="add-antique-form">
+        <form>
+            <label>Item Name:</label>
+            <input type="text" placeholder="Item Name" required autofocus [(ngModel)]="dataService.Antique.name" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Image Upload:</label>
+            <input type="text" placeholder="Image" required [(ngModel)]="dataService.Antique.image" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Description:</label>
+            <textarea placeholder="Description" required [(ngModel)]="dataService.Antique.description" [ngModelOptions]="{standalone: true}"></textarea>
+            <br>
+            <label>Condition:</label>
+            <input type="text" placeholder="Condition" required [(ngModel)]="dataService.Antique.condition" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Width:</label>
+            <input type="text" placeholder="Width" required [(ngModel)]="dataService.Antique.width" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Height:</label>
+            <input type="text" placeholder="Height" required [(ngModel)]="dataService.Antique.height" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Depth:</label>
+            <input type="text" placeholder="Depth" [(ngModel)]="dataService.Antique.depth" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Material:</label>
+            <input type="text" placeholder="Material" required [(ngModel)]="dataService.Antique.material" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Location:</label>
+            <input type="text" placeholder="Location" required [(ngModel)]="dataService.Antique.location" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Provenance:</label>
+            <textarea placeholder="Provenance" required [(ngModel)]="dataService.Antique.provenance" [ngModelOptions]="{standalone: true}"></textarea>
+            <br>
+            <label>Provenance Image:</label>
+            <input type="text" placeholder="Provenance Image" required [(ngModel)]="dataService.Antique.provenanceImage" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Item Status:</label>
+            <input type="text" placeholder="In Stock / Sold" required [(ngModel)]="dataService.Antique.status" [ngModelOptions]="{standalone: true}">
+        </form>
+        <button class="btn btn-success save-button" (click)="saveAntique()">Save Antique</button>
+    </div>
+</div>

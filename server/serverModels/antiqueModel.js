@@ -30,21 +30,21 @@ var Antique = new Schema({
     },
     createdAntiques: [{
         type: Schema.Types.ObjectId,
-        ref: "RouteModel"
+        ref: "UserModel"
     }],
     editedAntiques: [{
         type: Schema.Types.ObjectId,
-        ref: "PlaceModel"
+        ref: "UserModel"
     }]
 }, {
         timestamps: true
     });
 
 
-User.set('toJSON', {
+Antique.set('toJSON', {
     transform: function (doc, ret, options) {
         return ret;
     }
 });
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Antique', Antique);

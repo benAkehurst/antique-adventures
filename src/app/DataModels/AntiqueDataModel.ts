@@ -5,6 +5,8 @@ class AntiqueDataModel {
     year: String = '';
     category: String = '';
     signed: String = '';
+    boughtPrice: String = '';
+    soldPrice: String = '';
     value: String = '';
     image: String = '';
     description: String = '';

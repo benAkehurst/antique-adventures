@@ -20,11 +20,20 @@
             <input type="radio" class="radio-button" name="radioGroup" [(ngModel)]="dataService.Antique.signed" [value]="radioValue.valueNotSigned">Not Signed
             <!-- <input type="text" placeholder="Signed" required [(ngModel)]="dataService.Antique.signed" [ngModelOptions]="{standalone: true}"> -->
             <br>
+            <label>Bought Price:</label>
+            <input type="text" placeholder="Value" required [(ngModel)]="dataService.Antique.boughtPrice" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Sold Price:</label>
+            <input type="text" placeholder="Value" required [(ngModel)]="dataService.Antique.soldPrice" [ngModelOptions]="{standalone: true}">
+            <br>
             <label>Value:</label>
             <input type="text" placeholder="Value" required [(ngModel)]="dataService.Antique.value" [ngModelOptions]="{standalone: true}">
             <br>
             <label>Image Upload:</label>
-            <input type="text" placeholder="Image" required [(ngModel)]="dataService.Antique.image" [ngModelOptions]="{standalone: true}">
+            <input type="file" (change)="onFileSelected($event)">
+            <button type="button" (click)="uploadFile()">Upload</button>
+            <div>{{ uploadPercent | async }}</div>
+            <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
             <br>
             <label>Description:</label>
             <textarea placeholder="Description" required [(ngModel)]="dataService.Antique.description" [ngModelOptions]="{standalone: true}"></textarea>

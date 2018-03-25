@@ -8,6 +8,8 @@ import { NgModel } from '@angular/forms';
 import swal from 'sweetalert';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ArrayType } from '@angular/compiler/src/output/output_ast';
+import { AngularFireStorage } from 'angularfire2/storage';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'app-new-antique',
@@ -17,15 +19,33 @@ import { ArrayType } from '@angular/compiler/src/output/output_ast';
 
 export class NewAntiqueComponent implements OnInit {
 
-    constructor(public dataService: DataService, private router: Router) { }
+    constructor(public dataService: DataService, private router: Router, private storage: AngularFireStorage) { }
 
     errors: any;
     isDataLoaded: Boolean = false;
     loggedIn: Boolean = false;
     radioValue = { valueSigned: true, valueNotSigned: false };
     orderbydescending = true;
+    selectedFile = null;
+    toUpload = null;
+    uploadPercent: Observable<number>;
+    downloadURL: Observable<string>;
 
     ngOnInit() {
+    }
+
+    public onFileSelected(event) {
+        this.selectedFile = event.target.files[0];
+    }
+
+    uploadFile(event) {
+        const file = this.selectedFile;
+        const filePath = 'antique_images/' + this.selectedFile.name;
+        const task = this.storage.upload(filePath, file);
+        // observe percentage changes
+        this.uploadPercent = task.percentageChanges();
+        // get notified when the download URL is available
+        this.downloadURL = task.downloadURL();
     }
 
     public backToHome() {
@@ -42,6 +62,8 @@ export class NewAntiqueComponent implements OnInit {
             this.dataService.Antique.year = '';
             this.dataService.Antique.category = '';
             this.dataService.Antique.signed = '';
+            this.dataService.Antique.boughtPrice = '';
+            this.dataService.Antique.soldPrice = '';
             this.dataService.Antique.value = '';
             this.dataService.Antique.image = '';
             this.dataService.Antique.description = '';
@@ -60,32 +82,6 @@ export class NewAntiqueComponent implements OnInit {
             this.openSwal('Error', 'Sorry, we couldn\'t save right now');
         });
     }
-
-    // public getAllPlaces() {
-    //   this.dataService.getAllPlaces().subscribe(places => {
-    //       this.places = places.results;
-    //       // console.log(this.places);
-    //       this.stripInformationAboutPlace();
-    //     },
-    //     error => {
-    //       this.errors = error;
-    //       this.openSwal('Error', 'Sorry, we couldn\'t get any reccomendations right now');
-    //     });
-    // }
-
-
-
-    // public saveRoute() {
-    //   // console.log('route saved');
-    //   this.dataService.saveRoute().subscribe(response => {
-    //     // console.log(response);
-    //     this.openSwal('Success', 'Your route was saved!');
-    //   },
-    //     error => {
-    //       this.errors = error;
-    //       this.openSwal('Error', 'Sorry, we couldn\'t get any reccomendations right now');
-    //     });
-    // }
 
 
     public getStorageItems() {

@@ -61,6 +61,17 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
+
+//
+// ─── FIREBASE STORAGE ────────────────────────────────────────────────────
+//
+    
+//
+// ────────────────────────────────────────────────── FIREBASE STORAGE ─────
+//
+
+    
+
 //
 // ────────────────────────────────────────────────────────────────────────────────────────────────────────────── I ──────────
 //   :::::: S E R V E R   R O U T E S : :  :   :    :     :        :          :
@@ -205,6 +216,8 @@ app.post("/saveNewAntique", function (req, res, next) {
         year: data.antique.year,
         category: data.antique.category,
         signed: data.antique.signed,
+        boughtPrice: data.antique.boughtPrice,
+        soldPrice: data.antique.soldPrice,
         value: data.antique.value,
         image: data.antique.image,
         description: data.antique.description,
@@ -286,6 +299,7 @@ app.post("/deleteAntique", function (req, res, next) {
         }
     );
 });
+
 //
 // ───────────────────────────────────────────────────── DATABASE ACTIONS ROUTES ─────
 //

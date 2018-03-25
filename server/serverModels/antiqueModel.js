@@ -26,6 +26,12 @@ var Antique = new Schema({
     signed: {
         type: Boolean
     },
+    boughtPrice: {
+        type: String
+    },
+    SoldPrice: {
+        type: String
+    },
     value: {
         type: String
     },

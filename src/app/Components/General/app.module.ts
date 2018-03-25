@@ -24,6 +24,9 @@ import { ViewAntiqueComponent } from '../ViewAntiqueComponent/viewAntique.compon
 // Services
 import { DataService } from '../../Services/data.service';
 import { FilterPipe } from '../../Pipes/data-filter.pipe';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { environment } from './../../../environments/environment.prod';
 
 // Extras
 
@@ -47,7 +50,9 @@ import { FilterPipe } from '../../Pipes/data-filter.pipe';
     HttpModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

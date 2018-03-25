@@ -16,6 +16,7 @@ export class DataService {
   User: UserDataModel;
   Antique: AntiqueDataModel;
   selectedItemId: String = '';
+  itemImageUrl: String = '';
 
   constructor(private http: Http) {
     this.User = new UserDataModel();
@@ -106,6 +107,9 @@ export class DataService {
       return this.http
         .post(this.localUrl + 'deleteAntique', { data: dataObj }, { headers: this.headers })
         .map(res => res.json());
+    }
+
+    uploadAntiqueImage() {
     }
   //
   // ───────────────────────────────────────────────────────── ANTIQUE REQUESTS ─────

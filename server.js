@@ -238,7 +238,6 @@ app.post("/saveNewAntique", function (req, res, next) {
  */
 app.post("/editAntique/:_id", function(req,res, next){
     var updatedAntique = req.body.data.antique;
-    console.log(updatedAntique);
     Antique.findByIdAndUpdate(req.params._id, updatedAntique, {
         new: true
     }, function (err, antiqueData) {

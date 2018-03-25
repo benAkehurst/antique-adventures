@@ -54,7 +54,6 @@ export class EditAntiqueComponent implements OnInit {
     public editAntique() {
         // console.log('route saved');
         this.dataService.editAntique().subscribe(response => {
-            console.log(response);
             this.openSwal('Success', 'Your New Antique was updated!');
         },
         error => {

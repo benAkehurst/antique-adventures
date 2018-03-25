@@ -60,9 +60,7 @@ var Antique = new Schema({
         type: String
     },
     status: {
-        type: String,
-        enum: ['active', 'deleted'],
-        default: ['active']
+        type: String
     }
 }, 
 {

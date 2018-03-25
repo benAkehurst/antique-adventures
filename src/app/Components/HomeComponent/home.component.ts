@@ -50,7 +50,6 @@ public getAllAntiques() {
 }
 
 public editItem(itemId) {
-  console.log(itemId);
   this.dataService.selectedItemId = itemId;
   this.router.navigate(['/editAntique']);
 }

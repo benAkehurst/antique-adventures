@@ -91,8 +91,6 @@ export class DataService {
       const dataObj = {
         antique: this.Antique
       };
-      console.log(dataObj);
-      console.log(this.selectedItemId);
       return this.http
         .post(this.localUrl + 'editAntique/' + this.selectedItemId, { data: dataObj }, { headers: this.headers })
         .map(res => res.json());

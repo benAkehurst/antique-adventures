@@ -7,6 +7,7 @@ import { LoginComponent } from '../LoginComponent/login.component';
 import { RegisterComponent } from '../RegisterComponent/register.component';
 import { NewAntiqueComponent } from '../NewAntiqueComponent/newAntique.component';
 import { EditAntiqueComponent } from '../EditAntiqueComponent/editAntique.component';
+import { ViewAntiqueComponent } from '../ViewAntiqueComponent/viewAntique.component';
 
 
 // App Common
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'newAntique', component: NewAntiqueComponent},
     { path: 'editAntique', component: EditAntiqueComponent},
+    { path: 'viewAntique', component: ViewAntiqueComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

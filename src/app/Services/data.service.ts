@@ -69,10 +69,10 @@ export class DataService {
 
     getAntique(antiqueId) {
       const dataObj = {
-          antique: antiqueId
+        antique: antiqueId
       };
       return this.http
-        .post(this.localUrl + 'getAntique', {data: dataObj}, { headers: this.headers })
+        .post(this.localUrl + 'getAntique', { data: dataObj }, { headers: this.headers })
         .map(res => res.json());
     }
 
@@ -87,7 +87,7 @@ export class DataService {
         .map(res => res.json());
     }
 
-  editAntique() {
+    editAntique() {
       const dataObj = {
         antique: this.Antique
       };

@@ -19,13 +19,13 @@ import { LoginComponent } from '../LoginComponent/login.component';
 import { HomeComponent } from '../HomeComponent/home.component';
 import { NewAntiqueComponent } from '../NewAntiqueComponent/newAntique.component';
 import { EditAntiqueComponent } from '../EditAntiqueComponent/editAntique.component';
+import { ViewAntiqueComponent } from '../ViewAntiqueComponent/viewAntique.component';
 
 // Services
 import { DataService } from '../../Services/data.service';
 import { FilterPipe } from '../../Pipes/data-filter.pipe';
 
 // Extras
-import { DataTableModule } from 'angular2-datatable';
 
 
 
@@ -38,7 +38,8 @@ import { DataTableModule } from 'angular2-datatable';
     HomeComponent,
     FilterPipe,
     NewAntiqueComponent,
-    EditAntiqueComponent
+    EditAntiqueComponent,
+    ViewAntiqueComponent
   ],
   imports: [
     BrowserModule,
@@ -46,8 +47,7 @@ import { DataTableModule } from 'angular2-datatable';
     HttpModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule,
-    DataTableModule
+    BrowserAnimationsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

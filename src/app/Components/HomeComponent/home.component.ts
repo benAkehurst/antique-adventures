@@ -6,8 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { NgModel } from '@angular/forms';
 import swal from 'sweetalert';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-import { ArrayType } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-home',
@@ -34,20 +32,25 @@ ngOnInit() {
   this.getAllAntiques();
 }
 
-public addNewAntique() {
-  this.router.navigate(['/newAntique']);
-}
-
 public getAllAntiques() {
-  this.dataService.getAllAntiques().subscribe(response => {
+    this.dataService.getAllAntiques().subscribe(response => {
       this.antiques = response.data;
       console.log(this.antiques);
     },
-    error => {
-      this.errors = error;
-      console.log(error);
-      this.openSwal('Error', 'Sorry, we couldn\'t get any reccomendations right now');
-    });
+      error => {
+        this.errors = error;
+        console.log(error);
+        this.openSwal('Error', 'Sorry, we couldn\'t get any reccomendations right now');
+      });
+}
+
+public goToAntiquePage(itemId) {
+  this.dataService.selectedItemId = itemId;
+  this.router.navigate(['/viewAntique']);
+}
+
+public addNewAntique() {
+  this.router.navigate(['/newAntique']);
 }
 
 public editItem(itemId) {
@@ -55,10 +58,9 @@ public editItem(itemId) {
   this.router.navigate(['/editAntique']);
 }
 
-public sortByWordLength = (a: any) => {
-  return a.name.length;
-}
+public deleteItem(itemId) {
 
+}
 
 public getStorageItems() {
   const token = localStorage.getItem('token');

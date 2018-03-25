@@ -15,6 +15,7 @@ export class DataService {
   private localUrl = 'http://localhost:3000/';
   User: UserDataModel;
   Antique: AntiqueDataModel;
+  selectedItemId: String = '';
 
   constructor(private http: Http) {
     this.User = new UserDataModel();
@@ -62,13 +63,13 @@ export class DataService {
   //
     getAllAntiques() {
       return this.http
-        .get(this.localUrl + 'getAllAntiques', { headers: this.headers })
+        .post(this.localUrl + 'getAllAntiques', { headers: this.headers })
         .map(res => res.json());
     }
 
     getAntique(antiqueId) {
-    const dataObj = {
-        antique: antiqueId
+      const dataObj = {
+          antique: antiqueId
       };
       return this.http
         .post(this.localUrl + 'getAntique', {data: dataObj}, { headers: this.headers })
@@ -86,14 +87,14 @@ export class DataService {
         .map(res => res.json());
     }
 
-    editAntique() {
-      const userId = this.getUserId();
+  editAntique() {
       const dataObj = {
-        user: userId,
         antique: this.Antique
       };
+      console.log(dataObj);
+      console.log(this.selectedItemId);
       return this.http
-        .post(this.localUrl + 'editAntique', { data: dataObj }, { headers: this.headers })
+        .post(this.localUrl + 'editAntique/' + this.selectedItemId, { data: dataObj }, { headers: this.headers })
         .map(res => res.json());
     }
 

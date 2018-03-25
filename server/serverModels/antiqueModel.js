@@ -1,4 +1,3 @@
-
 'use strict';
 
 var debug = require('debug');
@@ -8,13 +7,26 @@ var log = debug('reportModel:log');
 var mongoose = require('mongoose');
 var mongooseUniqueValidator = require('mongoose-unique-validator');
 
-var UserModel = require('./userModel');
 
-var Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+var Schema = mongoose.Schema;
 
 var Antique = new Schema({
     name: {
+        type: String
+    },
+    artist: {
+        type: String
+    },
+    year: {
+        type: String
+    },
+    category: {
+        type: String
+    },
+    signed: {
+        type: Boolean
+    },
+    value: {
         type: String
     },
     image: {
@@ -48,11 +60,14 @@ var Antique = new Schema({
         type: String
     },
     status: {
-        type: String
+        type: String,
+        enum: ['active', 'deleted'],
+        default: ['active']
     }
-}, {
-        timestamps: true
-    });
+}, 
+{
+    timestamps: true
+});
 
 
 Antique.set('toJSON', {

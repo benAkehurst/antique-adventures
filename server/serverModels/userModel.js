@@ -7,8 +7,6 @@ var log = debug('reportModel:log');
 var mongoose = require('mongoose');
 var mongooseUniqueValidator = require('mongoose-unique-validator');
 
-var AntiqueModel = require('./antiqueModel');
-
 var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
@@ -24,9 +22,10 @@ var User = new Schema({
     name: {
         type: String
     }
-}, {
-        timestamps: true
-    });
+},
+{
+    timestamps: true
+});
 
 
 User.set('toJSON', {

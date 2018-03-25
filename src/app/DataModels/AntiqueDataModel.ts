@@ -1,6 +1,11 @@
 class AntiqueDataModel {
     _id: string;
     name: String = '';
+    artist: String = '';
+    year: String = '';
+    category: String = '';
+    signed: String = '';
+    value: String = '';
     image: String = '';
     description: String = '';
     condition: String = '';

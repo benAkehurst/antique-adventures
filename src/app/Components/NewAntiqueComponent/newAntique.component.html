@@ -6,6 +6,23 @@
             <label>Item Name:</label>
             <input type="text" placeholder="Item Name" required autofocus [(ngModel)]="dataService.Antique.name" [ngModelOptions]="{standalone: true}">
             <br>
+            <label>Artist:</label>
+            <input type="text" placeholder="Artist" required [(ngModel)]="dataService.Antique.artist" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Year:</label>
+            <input type="text" placeholder="Year" required [(ngModel)]="dataService.Antique.year" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Category:</label>
+            <input type="text" placeholder="Category" required [(ngModel)]="dataService.Antique.category" [ngModelOptions]="{standalone: true}">
+            <br>
+            <label>Signed:</label>
+            <input type="radio" class="radio-button" name="radioGroup" [(ngModel)]="dataService.Antique.signed" [value]="radioValue.valueSigned">Signed
+            <input type="radio" class="radio-button" name="radioGroup" [(ngModel)]="dataService.Antique.signed" [value]="radioValue.valueNotSigned">Not Signed
+            <!-- <input type="text" placeholder="Signed" required [(ngModel)]="dataService.Antique.signed" [ngModelOptions]="{standalone: true}"> -->
+            <br>
+            <label>Value:</label>
+            <input type="text" placeholder="Value" required [(ngModel)]="dataService.Antique.value" [ngModelOptions]="{standalone: true}">
+            <br>
             <label>Image Upload:</label>
             <input type="text" placeholder="Image" required [(ngModel)]="dataService.Antique.image" [ngModelOptions]="{standalone: true}">
             <br>

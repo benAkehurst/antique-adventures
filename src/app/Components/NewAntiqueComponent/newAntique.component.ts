@@ -22,6 +22,8 @@ export class NewAntiqueComponent implements OnInit {
     errors: any;
     isDataLoaded: Boolean = false;
     loggedIn: Boolean = false;
+    radioValue = { valueSigned: true, valueNotSigned: false };
+    orderbydescending = true;
 
     ngOnInit() {
     }
@@ -35,6 +37,23 @@ export class NewAntiqueComponent implements OnInit {
         this.dataService.saveAntique().subscribe(response => {
             // console.log(response);
             this.openSwal('Success', 'Your New Antique was saved!');
+            this.dataService.Antique.name = '';
+            this.dataService.Antique.artist = '';
+            this.dataService.Antique.year = '';
+            this.dataService.Antique.category = '';
+            this.dataService.Antique.signed = '';
+            this.dataService.Antique.value = '';
+            this.dataService.Antique.image = '';
+            this.dataService.Antique.description = '';
+            this.dataService.Antique.condition = '';
+            this.dataService.Antique.width = '';
+            this.dataService.Antique.height = '';
+            this.dataService.Antique.depth = '';
+            this.dataService.Antique.material = '';
+            this.dataService.Antique.location = '';
+            this.dataService.Antique.provenance = '';
+            this.dataService.Antique.provenanceImage = '';
+            this.dataService.Antique.status = '';
         },
         error => {
             this.errors = error;

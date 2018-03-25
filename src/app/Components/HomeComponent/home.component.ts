@@ -27,27 +27,33 @@ constructor(public dataService: DataService, private router: Router) {
 errors: any;
 isDataLoaded: Boolean = false;
 loggedIn: Boolean = false;
+antiques: Array<any> = [];
 
 ngOnInit() {
+  this.getAllAntiques();
 }
 
 public addNewAntique() {
   this.router.navigate(['/newAntique']);
 }
 
-// public getAllPlaces() {
-//   this.dataService.getAllPlaces().subscribe(places => {
-//       this.places = places.results;
-//       // console.log(this.places);
-//       this.stripInformationAboutPlace();
-//     },
-//     error => {
-//       this.errors = error;
-//       this.openSwal('Error', 'Sorry, we couldn\'t get any reccomendations right now');
-//     });
-// }
+public getAllAntiques() {
+  this.dataService.getAllAntiques().subscribe(response => {
+      this.antiques = response.data;
+      console.log(this.antiques);
+    },
+    error => {
+      this.errors = error;
+      console.log(error);
+      this.openSwal('Error', 'Sorry, we couldn\'t get any reccomendations right now');
+    });
+}
 
-
+public editItem(itemId) {
+  console.log(itemId);
+  this.dataService.selectedItemId = itemId;
+  this.router.navigate(['/editAntique']);
+}
 
 // public saveRoute() {
 //   // console.log('route saved');

@@ -158,14 +158,14 @@ app.post('/login', function (req, res, next) {
  * @param {*} req
  * @param {*} res
  */
-app.get("/getAllAntiques", function (req, res) {
+app.post("/getAllAntiques", function (req, res) {
     Antique.find({})
-        .exec(function (err, user) {
+        .exec(function (err, antiques) {
             if (err) {
                 console.log("Error: " + " " + err);
                 res.send({success: false, message: err});
             } else {
-                console.log(user);
+                // console.log(antiques);
                 res.send({ success: true, data: antiques})
             }
         })
@@ -178,14 +178,14 @@ app.get("/getAllAntiques", function (req, res) {
  * @param {*} next
  */
 app.post("/getAntique", function(req, res, next){
-    Antique.findOneById({ _id: req.data.antique})
-        .exec(function (err, user) {
+    Antique.findById({ _id: req.body.data.antique})
+        .exec(function (err, antique) {
             if (err) {
                 console.log("Error: " + " " + err);
                 res.send({ success: false, message: err });
             } else {
-                console.log(user);
-                res.send({ success: true, data: antiques })
+                // console.log(antique);
+                res.send({ success: true, data: antique })
             }
         })
 });
@@ -198,9 +198,14 @@ app.post("/getAntique", function(req, res, next){
  */
 app.post("/saveNewAntique", function (req, res, next) {
     const data = req.body.data;
+    
     const newAntique = new Antique({
-        user: data.user,
         name: data.antique.name,
+        artist: data.antique.artist,
+        year: data.antique.year,
+        category: data.antique.category,
+        signed: data.antique.signed,
+        value: data.antique.value,
         image: data.antique.image,
         description: data.antique.description,
         condition: data.antique.condition,
@@ -231,8 +236,20 @@ app.post("/saveNewAntique", function (req, res, next) {
  * @param {*} res
  * @param {*} next
  */
-app.post("/editAntique", function(req,res, next){
-
+app.post("/editAntique/:_id", function(req,res, next){
+    var updatedAntique = req.body.data.antique;
+    console.log(updatedAntique);
+    Antique.findByIdAndUpdate(req.params._id, updatedAntique, {
+        new: true
+    }, function (err, antiqueData) {
+        if (err) {
+            return next(err);
+        }
+        return res.send({
+            success: true,
+            antique: antiqueData
+        });
+    });
 });
 
 /**

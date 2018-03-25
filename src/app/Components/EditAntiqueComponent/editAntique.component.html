@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div class="container">
+    <div class="edit-antique-container">
+        <button class="btn btn-primary save-button" (click)="backToHome()">Go Back</button>
+        <form class="edit-antique-form">
+        <label>Item Name:</label>
+        <input type="text" placeholder="Item Name" required autofocus [(ngModel)]="dataService.Antique.name" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Artist:</label>
+        <input type="text" placeholder="Artist" required [(ngModel)]="dataService.Antique.artist" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Year:</label>
+        <input type="text" placeholder="Year" required [(ngModel)]="dataService.Antique.year" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Category:</label>
+        <input type="text" placeholder="Category" required [(ngModel)]="dataService.Antique.category" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Signed:</label>
+        <input type="radio" class="radio-button" name="radioGroup" [(ngModel)]="dataService.Antique.signed" [value]="radioValue.valueSigned">Signed
+        <input type="radio" class="radio-button" name="radioGroup" [(ngModel)]="dataService.Antique.signed" [value]="radioValue.valueNotSigned">Not Signed
+        <!-- <input type="text" placeholder="Signed" required [(ngModel)]="dataService.Antique.signed" [ngModelOptions]="{standalone: true}"> -->
+        <br>
+        <label>Value:</label>
+        <input type="text" placeholder="Value" required [(ngModel)]="dataService.Antique.value" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Image Upload:</label>
+        <input type="text" placeholder="Image" required [(ngModel)]="dataService.Antique.image" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Description:</label>
+        <textarea placeholder="Description" required [(ngModel)]="dataService.Antique.description" [ngModelOptions]="{standalone: true}"></textarea>
+        <br>
+        <label>Condition:</label>
+        <input type="text" placeholder="Condition" required [(ngModel)]="dataService.Antique.condition" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Width:</label>
+        <input type="text" placeholder="Width" required [(ngModel)]="dataService.Antique.width" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Height:</label>
+        <input type="text" placeholder="Height" required [(ngModel)]="dataService.Antique.height" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Depth:</label>
+        <input type="text" placeholder="Depth" [(ngModel)]="dataService.Antique.depth" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Material:</label>
+        <input type="text" placeholder="Material" required [(ngModel)]="dataService.Antique.material" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Location:</label>
+        <input type="text" placeholder="Location" required [(ngModel)]="dataService.Antique.location" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Provenance:</label>
+        <textarea placeholder="Provenance" required [(ngModel)]="dataService.Antique.provenance" [ngModelOptions]="{standalone: true}"></textarea>
+        <br>
+        <label>Provenance Image:</label>
+        <input type="text" placeholder="Provenance Image" required [(ngModel)]="dataService.Antique.provenanceImage" [ngModelOptions]="{standalone: true}">
+        <br>
+        <label>Item Status:</label>
+        <input type="text" placeholder="In Stock / Sold" required [(ngModel)]="dataService.Antique.status" [ngModelOptions]="{standalone: true}">
+    </form>
+        <button class="btn btn-success save-button" (click)="editAntique()">Save Edits</button>
+    </div>
+</div>

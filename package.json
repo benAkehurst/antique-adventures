@@ -30,6 +30,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "agm-direction": "^0.3.7",
+    "angular2-datatable": "^0.6.0",
     "angular2-loaders-css": "^2.0.1",
     "async": "^2.6.0",
     "axios": "^0.17.1",

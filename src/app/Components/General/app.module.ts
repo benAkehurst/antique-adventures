@@ -18,11 +18,13 @@ import { RegisterComponent } from '../RegisterComponent/register.component';
 import { LoginComponent } from '../LoginComponent/login.component';
 import { HomeComponent } from '../HomeComponent/home.component';
 import { NewAntiqueComponent } from '../NewAntiqueComponent/newAntique.component';
+import { EditAntiqueComponent } from '../EditAntiqueComponent/editAntique.component';
 
 // Services
 import { DataService } from '../../Services/data.service';
 
 // Extras
+import { DataTableModule } from 'angular2-datatable';
 
 
 
@@ -33,7 +35,8 @@ import { DataService } from '../../Services/data.service';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    NewAntiqueComponent
+    NewAntiqueComponent,
+    EditAntiqueComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { DataService } from '../../Services/data.service';
     HttpModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DataTableModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

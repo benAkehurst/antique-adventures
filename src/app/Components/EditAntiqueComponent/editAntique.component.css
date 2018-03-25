@@ -23,3 +23,13 @@ textarea {
 .radio-button {
     width: 25px;
 }
+
+.upload-button {
+    margin-left: 154px;
+    margin-bottom: 10px;
+}
+
+.upload-progress-bar {
+    width: 350px;
+    margin-left: 154px;
+}

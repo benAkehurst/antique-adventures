@@ -63,7 +63,7 @@
             <input type="file" (change)="onProvenanceFileSelected($event)">
             <br>
             <button type="button" class="upload-button" (click)="uploadProvenanceFile()">Upload</button>
-            <mat-progress-bar class="upload-progress-bar" mode="determinate" value="{{ uploadPercent | async }}"></mat-progress-bar>
+            <mat-progress-bar class="upload-prov-progress-bar" mode="determinate" value="{{ uploadPercentProv | async }}"></mat-progress-bar>
             <br>
             <label>Item Status:</label>
             <input type="text" placeholder="In Stock / Sold" required [(ngModel)]="dataService.Antique.status" [ngModelOptions]="{standalone: true}">

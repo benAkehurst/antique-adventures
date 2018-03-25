@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { NgModel } from '@angular/forms';
 import swal from 'sweetalert';
+import AntiqueDataModel from '../../DataModels/AntiqueDataModel';
 
 @Component({
     selector: 'app-view-antique',
@@ -21,7 +22,7 @@ export class ViewAntiqueComponent implements OnInit {
     isDataLoaded: Boolean = false;
     loggedIn: Boolean = false;
     itemId: String = '';
-    antique: Object = {};
+    antique: any = [];
 
     ngOnInit() {
         this.getItemId();

@@ -26,26 +26,45 @@ export class NewAntiqueComponent implements OnInit {
     loggedIn: Boolean = false;
     radioValue = { valueSigned: true, valueNotSigned: false };
     orderbydescending = true;
-    selectedFile = null;
+    selectedImageFile = null;
+    selectedProvenanceFile = null;
     toUpload = null;
     uploadPercent: Observable<number>;
-    downloadURL: Observable<string>;
+    uploadPercentProv: Observable<number>;
+    imageUrl: Observable<string | null>;
+    provenanceImageUrl: Observable<string | null>;
 
     ngOnInit() {
     }
 
-    public onFileSelected(event) {
-        this.selectedFile = event.target.files[0];
+    public onImageFileSelected(event) {
+        this.selectedImageFile = event.target.files[0];
     }
 
-    uploadFile(event) {
-        const file = this.selectedFile;
-        const filePath = 'antique_images/' + this.selectedFile.name;
+    public onProvenanceFileSelected(event) {
+        this.selectedProvenanceFile = event.target.files[0];
+    }
+
+    public uploadFile() {
+        const file = this.selectedImageFile;
+        const filePath = 'antique_images/' + this.selectedImageFile.name;
         const task = this.storage.upload(filePath, file);
-        // observe percentage changes
         this.uploadPercent = task.percentageChanges();
-        // get notified when the download URL is available
-        this.downloadURL = task.downloadURL();
+        this.imageUrl = task.downloadURL();
+        this.imageUrl.subscribe(value => {
+            this.dataService.Antique.image = value;
+        });
+    }
+
+    public uploadProvenanceFile() {
+        const file = this.selectedProvenanceFile;
+        const filePath = 'antique_images/' + this.selectedProvenanceFile.name;
+        const task = this.storage.upload(filePath, file);
+        this.uploadPercentProv = task.percentageChanges();
+        this.provenanceImageUrl = task.downloadURL();
+        this.provenanceImageUrl.subscribe(value => {
+            this.dataService.Antique.provenanceImage = value;
+        });
     }
 
     public backToHome() {
@@ -53,7 +72,6 @@ export class NewAntiqueComponent implements OnInit {
     }
 
     public saveAntique() {
-        // console.log('route saved');
         this.dataService.saveAntique().subscribe(response => {
             // console.log(response);
             this.openSwal('Success', 'Your New Antique was saved!');

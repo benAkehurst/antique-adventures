@@ -11,6 +11,16 @@ input {
     width: 350px;
 }
 
+.upload-button {
+    margin-left: 154px;
+    margin-bottom: 10px;
+}
+
+.upload-progress-bar {
+    width: 350px;
+    margin-left: 154px;
+}
+
 textarea {
     width: 350px;
     height: 140px;

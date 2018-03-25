@@ -30,10 +30,10 @@
             <input type="text" placeholder="Value" required [(ngModel)]="dataService.Antique.value" [ngModelOptions]="{standalone: true}">
             <br>
             <label>Image Upload:</label>
-            <input type="file" (change)="onFileSelected($event)">
-            <button type="button" (click)="uploadFile()">Upload</button>
-            <div>{{ uploadPercent | async }}</div>
-            <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+            <input type="file" (change)="onImageFileSelected($event)">
+            <br>
+            <button type="button" class="upload-button" (click)="uploadFile()">Upload</button>
+            <mat-progress-bar class="upload-progress-bar" mode="determinate" value="{{ uploadPercent | async }}"></mat-progress-bar>
             <br>
             <label>Description:</label>
             <textarea placeholder="Description" required [(ngModel)]="dataService.Antique.description" [ngModelOptions]="{standalone: true}"></textarea>
@@ -60,7 +60,10 @@
             <textarea placeholder="Provenance" required [(ngModel)]="dataService.Antique.provenance" [ngModelOptions]="{standalone: true}"></textarea>
             <br>
             <label>Provenance Image:</label>
-            <input type="text" placeholder="Provenance Image" required [(ngModel)]="dataService.Antique.provenanceImage" [ngModelOptions]="{standalone: true}">
+            <input type="file" (change)="onProvenanceFileSelected($event)">
+            <br>
+            <button type="button" class="upload-button" (click)="uploadProvenanceFile()">Upload</button>
+            <mat-progress-bar class="upload-progress-bar" mode="determinate" value="{{ uploadPercent | async }}"></mat-progress-bar>
             <br>
             <label>Item Status:</label>
             <input type="text" placeholder="In Stock / Sold" required [(ngModel)]="dataService.Antique.status" [ngModelOptions]="{standalone: true}">

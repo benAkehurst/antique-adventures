@@ -27,6 +27,7 @@ constructor(public dataService: DataService, private router: Router) {
 errors: any;
 isDataLoaded: Boolean = false;
 loggedIn: Boolean = false;
+queryString: String = '';
 antiques: Array<any> = [];
 
 ngOnInit() {
@@ -54,17 +55,9 @@ public editItem(itemId) {
   this.router.navigate(['/editAntique']);
 }
 
-// public saveRoute() {
-//   // console.log('route saved');
-//   this.dataService.saveRoute().subscribe(response => {
-//     // console.log(response);
-//     this.openSwal('Success', 'Your route was saved!');
-//   },
-//     error => {
-//       this.errors = error;
-//       this.openSwal('Error', 'Sorry, we couldn\'t get any reccomendations right now');
-//     });
-// }
+public sortByWordLength = (a: any) => {
+  return a.name.length;
+}
 
 
 public getStorageItems() {

@@ -22,6 +22,7 @@ import { EditAntiqueComponent } from '../EditAntiqueComponent/editAntique.compon
 
 // Services
 import { DataService } from '../../Services/data.service';
+import { FilterPipe } from '../../Pipes/data-filter.pipe';
 
 // Extras
 import { DataTableModule } from 'angular2-datatable';
@@ -35,6 +36,7 @@ import { DataTableModule } from 'angular2-datatable';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    FilterPipe,
     NewAntiqueComponent,
     EditAntiqueComponent
   ],

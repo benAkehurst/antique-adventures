@@ -29,6 +29,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from './../../../environments/environment.prod';
 
 // Extras
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -52,7 +53,8 @@ import { environment } from './../../../environments/environment.prod';
     MaterialModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    NgxPaginationModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

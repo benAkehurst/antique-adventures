@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { NgModel } from '@angular/forms';
 import swal from 'sweetalert';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +28,7 @@ isDataLoaded: Boolean = false;
 loggedIn: Boolean = false;
 queryString: String = '';
 antiques: Array<any> = [];
+p: Number = 1;
 
 ngOnInit() {
   this.getAllAntiques();

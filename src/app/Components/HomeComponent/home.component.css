@@ -7,3 +7,13 @@ body {
   margin-top: 25px;
   margin-bottom: 25px;
 }
+
+.item-name:hover,
+.item-description:hover,
+.item-location:hover,
+.item-edit:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #2980b9;
+  font-weight: bold;
+}

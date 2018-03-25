@@ -3,36 +3,36 @@
 <div class="container">
   <div class="app-container">
     <div class="antique-options">
-      <button class="btn btn-primary add-new-button" (click)="addNewAntique()">Add New Antique</button>
+      <button class="btn btn-success add-new-button" (click)="addNewAntique()">Add New Antique</button>
     </div>
     <div class="antiques-table">
       <table class="table table-striped">
         <thead>
-          <tr>
-            <th style="width: 20%">Name</th>
-            <th style="width: 50%">Description</th>
-            <th style="width: 10%">Location</th>
-            <th style="width: 10%">Created On</th>
-            <th style="width: 5%">Edit</th>
-            <th style="width: 5%">Trash</th>
-          </tr>
           <tr>
             <th colspan="3">
               Search Table by Name:
               <input type="text" [(ngModel)]="queryString" placeholder="Search...">
             </th>
           </tr>
+          <tr>
+            <th style="width: 20%">Name</th>
+            <th style="width: 50%">Description</th>
+            <th style="width: 10%">Location</th>
+            <th style="width: 10%">Created On</th>
+            <th style="width: 5%">Edit</th>
+            <!-- <th style="width: 5%">Trash</th> -->
+          </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of antiques  | FilterPipe: 'name': queryString | paginate: { itemsPerPage: 10, currentPage: p }">
-            <td (click)="goToAntiquePage(item._id)">{{item.name}}</td>
-            <td (click)="goToAntiquePage(item._id)">{{item.description}}</td>
-            <td (click)="goToAntiquePage(item._id)">{{item.location}}</td>
+            <td (click)="goToAntiquePage(item._id)" class="item-name">{{item.name}}</td>
+            <td (click)="goToAntiquePage(item._id)" class="item-description">{{item.description}}</td>
+            <td (click)="goToAntiquePage(item._id)" class="item-location">{{item.location}}</td>
             <td>{{item.createdAt | date: 'dd/MM/yyyy'}}</td>
-            <td (click)="editItem(item._id)">Edit</td>
-            <td>
+            <td (click)="editItem(item._id)" class="item-edit">Edit</td>
+            <!-- <td>
               <i class="fa fa-trash delete-item"></i>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>

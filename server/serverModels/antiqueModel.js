@@ -23,6 +23,9 @@ var Antique = new Schema({
     category: {
         type: String
     },
+    subCategory: {
+        type: String
+    },
     signed: {
         type: Boolean
     },

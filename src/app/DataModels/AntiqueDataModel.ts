@@ -4,6 +4,7 @@ class AntiqueDataModel {
     artist: String = '';
     year: String = '';
     category: String = '';
+    subCategory: String = '';
     signed: String = '';
     boughtPrice: String = '';
     soldPrice: String = '';

@@ -15,6 +15,9 @@
             <label>Category:</label>
             <input type="text" placeholder="Category" required [(ngModel)]="dataService.Antique.category" [ngModelOptions]="{standalone: true}">
             <br>
+            <label>Sub-Category:</label>
+            <input type="text" placeholder="Sub-Category" required [(ngModel)]="dataService.Antique.subCategory" [ngModelOptions]="{standalone: true}">
+            <br>
             <label>Signed:</label>
             <input type="radio" class="radio-button" name="radioGroup" [(ngModel)]="dataService.Antique.signed" [value]="radioValue.valueSigned">Signed
             <input type="radio" class="radio-button" name="radioGroup" [(ngModel)]="dataService.Antique.signed" [value]="radioValue.valueNotSigned">Not Signed
@@ -63,7 +66,7 @@
             <input type="file" (change)="onProvenanceFileSelected($event)">
             <br>
             <button type="button" class="upload-button" (click)="uploadProvenanceFile()">Upload</button>
-            <mat-progress-bar class="upload-prov-progress-bar" mode="determinate" value="{{ uploadPercentProv | async }}"></mat-progress-bar>
+            <mat-progress-bar class="upload-progress-bar" mode="determinate" value="{{ uploadPercentProv | async }}"></mat-progress-bar>
             <br>
             <label>Item Status:</label>
             <input type="text" placeholder="In Stock / Sold" required [(ngModel)]="dataService.Antique.status" [ngModelOptions]="{standalone: true}">

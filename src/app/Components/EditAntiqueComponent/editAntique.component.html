@@ -15,6 +15,9 @@
         <label>Category:</label>
         <input type="text" placeholder="Category" required [(ngModel)]="dataService.Antique.category" [ngModelOptions]="{standalone: true}">
         <br>
+        <label>Sub-Category:</label>
+        <input type="text" placeholder="Sub-Category" required [(ngModel)]="dataService.Antique.subCategory" [ngModelOptions]="{standalone: true}">
+        <br>
         <label>Signed:</label>
         <input type="radio" class="radio-button" name="radioGroup" [(ngModel)]="dataService.Antique.signed" [value]="radioValue.valueSigned">Signed
         <input type="radio" class="radio-button" name="radioGroup" [(ngModel)]="dataService.Antique.signed" [value]="radioValue.valueNotSigned">Not Signed

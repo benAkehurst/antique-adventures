@@ -66,6 +66,10 @@ public deleteItem(itemId) {
 
 public downloadDatabaseAsXls() {
   this.dataService.downloadDatabase().subscribe(res => {
+    console.log(res);
+    const blob = new Blob([res.dowload], { type: 'text/xls' });
+    const url = window.URL.createObjectURL(blob);
+    window.open(url);
     console.log('DB downloaded');
   });
 }

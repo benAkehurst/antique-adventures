@@ -73,16 +73,39 @@ app.post("/download-database", function (req, res, next) {
                 console.log("Error: " + " " + err);
                 res.send({ success: false, message: err });
             } else {
-                console.log(antique);
-                const json = {
-                    foo: 'bar',
-                    qux: 'moo',
-                    poo: 123,
-                    stux: new Date()
+                // console.log(antique);
+                let antiqueArr = [];
+                for (var i = 0; i < antique.length; i++) {
+                    let antiqueItem = {
+                        name: antique[i].name,
+                        artist: antique[i].artist,
+                        year: antique[i].year,
+                        category: antique[i].category,
+                        subCategory: antique[i].subCategory,
+                        signed: antique[i].signed,
+                        boughtPrice: antique[i].boughtPrice,
+                        soldPrice: antique[i].soldPrice,
+                        value: antique[i].value,
+                        image: antique[i].image,
+                        description: antique[i].description,
+                        condition: antique[i].condition,
+                        width: antique[i].width,
+                        height: antique[i].height,
+                        depth: antique[i].depth,
+                        material: antique[i].material,
+                        location: antique[i].location,
+                        provenance: antique[i].provenance,
+                        provenanceImage: antique[i].provenanceImage,
+                        status: antique[i].status,
+                        createdAt: antique[i].createdAt,
+                        updatedAt: antique[i].updatedAt
+                    }
+                    antiqueArr.push(antiqueItem);
                 }
-                const xls = json2xls(json);
-                fs.writeFileSync('antique-adventures-database.xlsx', xls, 'binary');
-                res.send({ success: true })
+                // console.log(antiqueArr);
+                const xls = json2xls(antiqueArr);
+                fs.writeFileSync('antique-adventures-database.xls', xls, 'binary');
+                res.send({ success: true, download: xls });
             }
         })
 });

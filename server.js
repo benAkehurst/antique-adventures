@@ -252,7 +252,6 @@ app.post("/getAntique", function(req, res, next){
  */
 app.post("/saveNewAntique", function (req, res, next) {
     const data = req.body.data;
-    console.log(req.body.data);
     const newAntique = new Antique({
         name: data.antique.name,
         artist: data.antique.artist,

@@ -252,12 +252,13 @@ app.post("/getAntique", function(req, res, next){
  */
 app.post("/saveNewAntique", function (req, res, next) {
     const data = req.body.data;
-    
+    console.log(req.body.data);
     const newAntique = new Antique({
         name: data.antique.name,
         artist: data.antique.artist,
         year: data.antique.year,
-        category: data.antique.category,
+        category: data.antique.category.category,
+        subCategory: data.antique.subCategory,
         signed: data.antique.signed,
         boughtPrice: data.antique.boughtPrice,
         soldPrice: data.antique.soldPrice,

@@ -32,6 +32,15 @@ export class EditAntiqueComponent implements OnInit {
     uploadPercentProv: Observable<number>;
     imageUrl: Observable<string | null>;
     provenanceImageUrl: Observable<string | null>;
+    categories = [
+        { id: 1, category: 'Paintings / Prints' },
+        { id: 2, category: 'Glass' },
+        { id: 3, category: 'Bronze' },
+        { id: 4, category: 'Ceramics' },
+        { id: 5, category: 'Jewellery' },
+        { id: 6, category: 'Philatelic' },
+        { id: 7, category: 'Numismatic' },
+    ];
 
     ngOnInit() {
         this.getItemId();
@@ -74,6 +83,7 @@ export class EditAntiqueComponent implements OnInit {
             this.dataService.Antique.artist = res.data.artist;
             this.dataService.Antique.year = res.data.year;
             this.dataService.Antique.category = res.data.category;
+            this.dataService.Antique.subCategory = res.data.subCategory;
             this.dataService.Antique.signed = res.data.signed;
             this.dataService.Antique.value = res.data.value;
             this.dataService.Antique.description = res.data.description;

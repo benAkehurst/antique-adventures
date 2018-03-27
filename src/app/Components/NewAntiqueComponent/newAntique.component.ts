@@ -33,6 +33,15 @@ export class NewAntiqueComponent implements OnInit {
     uploadPercentProv: Observable<number>;
     imageUrl: Observable<string | null>;
     provenanceImageUrl: Observable<string | null>;
+    categories = [
+        { id: 1, category: 'Paintings / Prints' },
+        { id: 2, category: 'Glass' },
+        { id: 3, category: 'Bronze' },
+        { id: 4, category: 'Ceramics' },
+        { id: 5, category: 'Jewellery' },
+        { id: 6, category: 'Philatelic' },
+        { id: 7, category: 'Numismatic' },
+    ];
 
     ngOnInit() {
     }
@@ -79,6 +88,7 @@ export class NewAntiqueComponent implements OnInit {
             this.dataService.Antique.artist = '';
             this.dataService.Antique.year = '';
             this.dataService.Antique.category = '';
+            this.dataService.Antique.subCategory = '';
             this.dataService.Antique.signed = '';
             this.dataService.Antique.boughtPrice = '';
             this.dataService.Antique.soldPrice = '';

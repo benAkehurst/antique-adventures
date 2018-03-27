@@ -13,7 +13,9 @@
         <input type="text" placeholder="Year" required [(ngModel)]="dataService.Antique.year" [ngModelOptions]="{standalone: true}">
         <br>
         <label>Category:</label>
-        <input type="text" placeholder="Category" required [(ngModel)]="dataService.Antique.category" [ngModelOptions]="{standalone: true}">
+        <select [(ngModel)]="dataService.Antique.category" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let c of categories" [ngValue]="c.category">{{c.category}}</option>
+        </select>
         <br>
         <label>Sub-Category:</label>
         <input type="text" placeholder="Sub-Category" required [(ngModel)]="dataService.Antique.subCategory" [ngModelOptions]="{standalone: true}">

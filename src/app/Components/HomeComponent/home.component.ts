@@ -64,6 +64,12 @@ public deleteItem(itemId) {
 
 }
 
+public downloadDatabaseAsXls() {
+  this.dataService.downloadDatabase().subscribe(res => {
+    console.log('DB downloaded');
+  });
+}
+
 public getStorageItems() {
   const token = localStorage.getItem('token');
   const id = localStorage.getItem('id');

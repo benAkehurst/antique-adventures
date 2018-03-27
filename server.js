@@ -4,6 +4,7 @@
 // ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 //
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
@@ -14,6 +15,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const mongooseUniqueValidator = require('mongoose-unique-validator');
 const async = require("async");
+const json2xls = require('json2xls');
 //
 // ──────────────────────────────────────────────────────────────────────────────────────────────────────────── I ──────────
 //   :::::: S E R V E R   C O N F I G U R A T I O N : :  :   :    :     :        :          :
@@ -61,16 +63,34 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-
 //
-// ─── FIREBASE STORAGE ────────────────────────────────────────────────────
+// ─── DOWNLOAD DATABASE ──────────────────────────────────────────────────────────
 //
+app.post("/download-database", function (req, res, next) {
+    Antique.find({})
+        .exec(function (err, antique) {
+            if (err) {
+                console.log("Error: " + " " + err);
+                res.send({ success: false, message: err });
+            } else {
+                console.log(antique);
+                const json = {
+                    foo: 'bar',
+                    qux: 'moo',
+                    poo: 123,
+                    stux: new Date()
+                }
+                const xls = json2xls(json);
+                fs.writeFileSync('antique-adventures-database.xlsx', xls, 'binary');
+                res.send({ success: true })
+            }
+        })
+});
     
 //
-// ────────────────────────────────────────────────── FIREBASE STORAGE ─────
+// ──────────────────────────────────────────────────────── DOWNLOAD DATABASE ─────
 //
 
-    
 
 //
 // ────────────────────────────────────────────────────────────────────────────────────────────────────────────── I ──────────

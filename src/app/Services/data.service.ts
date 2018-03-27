@@ -109,7 +109,10 @@ export class DataService {
         .map(res => res.json());
     }
 
-    uploadAntiqueImage() {
+    downloadDatabase() {
+      return this.http
+        .post(this.localUrl + 'download-database', {headers: this.headers})
+        .map(res => res.json());
     }
   //
   // ───────────────────────────────────────────────────────── ANTIQUE REQUESTS ─────

@@ -213,7 +213,7 @@ app.post("/saveNewAntique", function (req, res, next) {
         signed: data.antique.signed,
         boughtPrice: data.antique.boughtPrice,
         soldPrice: data.antique.soldPrice,
-        value: data.antique.value,
+        value: data.antiqueValue,
         image: data.antique.image,
         description: data.antique.description,
         condition: data.antique.condition,
@@ -246,17 +246,34 @@ app.post("/saveNewAntique", function (req, res, next) {
  */
 app.post("/editAntique/:_id", function(req,res, next){
     var updatedAntique = req.body.data.antique;
-    Antique.findByIdAndUpdate(req.params._id, updatedAntique, {
-        new: true
-    }, function (err, antiqueData) {
-        if (err) {
-            return next(err);
+    var updatedValue = req.body.data.antiqueValue
+    async.parallel(
+        {
+            updateAntique: function (callback) {
+                Antique.findByIdAndUpdate(req.params._id, {
+                    updatedAntique
+                }).exec(function (err, serverUpdatedAntique) {
+                    callback(err, serverUpdatedAntique);
+                });
+            },
+            updateAntiqueValue: function (callback) {
+                Antique.findByIdAndUpdate(
+                    req.params._id,
+                    { $push: { value: updatedValue } },
+                    { new: true }
+                ).exec(function (err, finalUpdatedAntique) {
+                    callback(err, finalUpdatedAntique);
+                });
+            }
+        },
+        function (err, antique) {
+            if (err) {
+                next(err);
+                return;
+            }
+            res.send({ success: true, antique: antique });
         }
-        return res.send({
-            success: true,
-            antique: antiqueData
-        });
-    });
+    )
 });
 
 /**

@@ -77,20 +77,22 @@ export class DataService {
         .map(res => res.json());
     }
 
-    saveAntique() {
+    saveAntique(itemValObj) {
       const userId = this.getUserId();
       const dataObj = {
         user: userId,
-        antique: this.Antique
+        antique: this.Antique,
+        antiqueValue: itemValObj
       };
       return this.http
         .post(this.localUrl + 'saveNewAntique', { data: dataObj }, { headers: this.headers })
         .map(res => res.json());
     }
 
-    editAntique() {
+  editAntique(itemValObj) {
       const dataObj = {
-        antique: this.Antique
+        antique: this.Antique,
+        antiqueValue: itemValObj
       };
       return this.http
         .post(this.localUrl + 'editAntique/' + this.selectedItemId, { data: dataObj }, { headers: this.headers })

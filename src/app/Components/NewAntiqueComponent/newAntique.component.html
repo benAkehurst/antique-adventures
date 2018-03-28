@@ -32,7 +32,8 @@
             <input type="text" placeholder="Value" required [(ngModel)]="dataService.Antique.soldPrice" [ngModelOptions]="{standalone: true}">
             <br>
             <label>Value:</label>
-            <input type="text" placeholder="Value" required [(ngModel)]="dataService.Antique.value" [ngModelOptions]="{standalone: true}">
+            <input type="text" class="value-input" placeholder="Value" required [(ngModel)]="this.itemValue.value" [ngModelOptions]="{standalone: true}">
+            <input type="date" class="value-date" [(ngModel)]="this.itemValue.date" [ngModelOptions]="{standalone: true}">
             <br>
             <label>Image Upload:</label>
             <input type="file" (change)="onImageFileSelected($event)">

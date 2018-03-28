@@ -36,7 +36,7 @@ var Antique = new Schema({
         type: String
     },
     value: {
-        type: String
+        type: Array
     },
     image: {
         type: String

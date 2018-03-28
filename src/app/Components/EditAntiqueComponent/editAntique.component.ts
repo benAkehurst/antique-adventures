@@ -32,6 +32,10 @@ export class EditAntiqueComponent implements OnInit {
     uploadPercentProv: Observable<number>;
     imageUrl: Observable<string | null>;
     provenanceImageUrl: Observable<string | null>;
+    itemValue = {
+        value: '',
+        date: ''
+    };
     categories = [
         { id: 1, category: 'Paintings / Prints' },
         { id: 2, category: 'Glass' },
@@ -102,7 +106,7 @@ export class EditAntiqueComponent implements OnInit {
 
     public editAntique() {
         // console.log('route saved');
-        this.dataService.editAntique().subscribe(response => {
+        this.dataService.editAntique(this.itemValue).subscribe(response => {
             this.openSwal('Success', 'Your New Antique was updated!');
         },
         error => {

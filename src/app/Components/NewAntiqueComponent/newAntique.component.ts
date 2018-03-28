@@ -33,6 +33,10 @@ export class NewAntiqueComponent implements OnInit {
     uploadPercentProv: Observable<number>;
     imageUrl: Observable<string | null>;
     provenanceImageUrl: Observable<string | null>;
+    itemValue = {
+        value: '',
+        date: ''
+    };
     categories = [
         { id: 1, category: 'Paintings / Prints' },
         { id: 2, category: 'Glass' },
@@ -81,7 +85,7 @@ export class NewAntiqueComponent implements OnInit {
     }
 
     public saveAntique() {
-        this.dataService.saveAntique().subscribe(response => {
+        this.dataService.saveAntique(this.itemValue).subscribe(response => {
             // console.log(response);
             this.openSwal('Success', 'Your New Antique was saved!');
             this.dataService.Antique.name = '';
@@ -92,7 +96,6 @@ export class NewAntiqueComponent implements OnInit {
             this.dataService.Antique.signed = '';
             this.dataService.Antique.boughtPrice = '';
             this.dataService.Antique.soldPrice = '';
-            this.dataService.Antique.value = '';
             this.dataService.Antique.image = '';
             this.dataService.Antique.description = '';
             this.dataService.Antique.condition = '';

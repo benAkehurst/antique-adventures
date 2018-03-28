@@ -12,6 +12,11 @@ select {
     width: 350px;
 }
 
+.value-input,
+.value-date {
+    width: 175px;
+}
+
 .upload-button {
     margin-left: 154px;
     margin-bottom: 10px;

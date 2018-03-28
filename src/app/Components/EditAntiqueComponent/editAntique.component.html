@@ -26,7 +26,14 @@
         <!-- <input type="text" placeholder="Signed" required [(ngModel)]="dataService.Antique.signed" [ngModelOptions]="{standalone: true}"> -->
         <br>
         <label>Value:</label>
-        <input type="text" placeholder="Value" required [(ngModel)]="dataService.Antique.value" [ngModelOptions]="{standalone: true}">
+        <input type="text" class="value-input" placeholder="Value" required [(ngModel)]="this.itemValue.value" [ngModelOptions]="{standalone: true}">
+        <input type="date" class="value-date" [(ngModel)]="this.itemValue.date" [ngModelOptions]="{standalone: true}">
+        <div class="values">
+            <div>Previous Values:</div>
+            <div *ngFor="let value of dataService.Antique.value">
+                <span><strong>Value:</strong> {{value.value}}, </span><span><strong>Date:</strong> {{value.date | date: 'shortDate'}}</span>
+            </div>
+        </div>
         <br>
         <label>Image Upload:</label>
         <input type="file" (change)="onImageFileSelected($event)">

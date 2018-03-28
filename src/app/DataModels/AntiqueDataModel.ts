@@ -8,7 +8,7 @@ class AntiqueDataModel {
     signed: String = '';
     boughtPrice: String = '';
     soldPrice: String = '';
-    value: String = '';
+    value: Array<any> = [];
     image: String = '';
     description: String = '';
     condition: String = '';

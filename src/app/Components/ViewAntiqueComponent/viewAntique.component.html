@@ -25,7 +25,12 @@
                     </mat-card>
                     <mat-card class="value-card">
                         <h1>Item Value</h1>
-                        <p>Current Value: {{antique.value}}</p>
+                        <div class="item-values">
+                            <p *ngFor="let value of antique.value">
+                                <strong>Value: {{value.value}}</strong>
+                                <br><strong>Date: {{value.date | date: 'shortDate'}}</strong>
+                            </p>
+                        </div>
                         <p>Bought Price: {{antique.boughtPrice}}</p>
                         <p>Sold Price : {{antique.soldValue}}</p>
                     </mat-card>

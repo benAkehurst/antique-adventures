@@ -108,12 +108,6 @@ export class DataService {
         .post(this.localUrl + 'deleteAntique', { data: dataObj }, { headers: this.headers })
         .map(res => res.json());
     }
-
-    downloadDatabase() {
-      return this.http
-        .post(this.localUrl + 'download-database', {headers: this.headers})
-        .map(res => res.json());
-    }
   //
   // ───────────────────────────────────────────────────────── ANTIQUE REQUESTS ─────
   //

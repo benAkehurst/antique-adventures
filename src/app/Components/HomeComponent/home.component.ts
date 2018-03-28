@@ -7,6 +7,7 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 import { NgModel } from '@angular/forms';
 import swal from 'sweetalert';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 @Component({
   selector: 'app-home',
@@ -64,14 +65,25 @@ public deleteItem(itemId) {
 
 }
 
-public downloadDatabaseAsXls() {
-  this.dataService.downloadDatabase().subscribe(res => {
-    console.log(res);
-    const blob = new Blob([res.dowload], { type: 'text/xls' });
-    const url = window.URL.createObjectURL(blob);
-    window.open(url);
-    console.log('DB downloaded');
-  });
+public downloadDatabaseAsCsv() {
+  const options = {
+    fieldSeparator: ',',
+    quoteStrings: '"',
+    decimalseparator: '.',
+    showLabels: true,
+    showTitle: false,
+    useBom: false
+  };
+  const filename = 'Antique Adventures Database Dump';
+  const downloadFile = new Angular2Csv(this.antiques, filename, options);
+  this.downloadFile(downloadFile);
+}
+
+downloadFile(data) {
+  console.log(data);
+  const blob = new Blob([data], { type: 'application/vnd.ms-excel' });
+  const url = window.URL.createObjectURL(blob);
+  window.open(url);
 }
 
 public getStorageItems() {

@@ -15,7 +15,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const mongooseUniqueValidator = require('mongoose-unique-validator');
 const async = require("async");
-const json2xls = require('json2xls');
 //
 // ──────────────────────────────────────────────────────────────────────────────────────────────────────────── I ──────────
 //   :::::: S E R V E R   C O N F I G U R A T I O N : :  :   :    :     :        :          :
@@ -61,53 +60,6 @@ mongoose.connect("mongodb://localhost:27017/antiqueAdventuresDB", function (err)
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
-
-//
-// ─── DOWNLOAD DATABASE ──────────────────────────────────────────────────────────
-//
-app.post("/download-database", function (req, res, next) {
-    Antique.find({})
-        .exec(function (err, antique) {
-            if (err) {
-                console.log("Error: " + " " + err);
-                res.send({ success: false, message: err });
-            } else {
-                // console.log(antique);
-                let antiqueArr = [];
-                for (var i = 0; i < antique.length; i++) {
-                    let antiqueItem = {
-                        name: antique[i].name,
-                        artist: antique[i].artist,
-                        year: antique[i].year,
-                        category: antique[i].category,
-                        subCategory: antique[i].subCategory,
-                        signed: antique[i].signed,
-                        boughtPrice: antique[i].boughtPrice,
-                        soldPrice: antique[i].soldPrice,
-                        value: antique[i].value,
-                        image: antique[i].image,
-                        description: antique[i].description,
-                        condition: antique[i].condition,
-                        width: antique[i].width,
-                        height: antique[i].height,
-                        depth: antique[i].depth,
-                        material: antique[i].material,
-                        location: antique[i].location,
-                        provenance: antique[i].provenance,
-                        provenanceImage: antique[i].provenanceImage,
-                        status: antique[i].status,
-                        createdAt: antique[i].createdAt,
-                        updatedAt: antique[i].updatedAt
-                    }
-                    antiqueArr.push(antiqueItem);
-                }
-                // console.log(antiqueArr);
-                const xls = json2xls(antiqueArr);
-                fs.writeFileSync('antique-adventures-database.xls', xls, 'binary');
-                res.send({ success: true, download: xls });
-            }
-        })
 });
     
 //

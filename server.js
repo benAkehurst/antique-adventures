@@ -41,21 +41,21 @@ app.use(express.static(path.join(__dirname, 'dist'))); // Point static path to d
 // Connect to DB with mongoose
 mongoose.Promise = global.Promise;
 // Local DB
-mongoose.connect("mongodb://localhost:27017/antiqueAdventuresDB", function (err) {
-    if (err) {
-        console.log("Error: " + err);
-    } else {
-        console.log("Connected to Database")
-    }
-});
-// Live DB
-// mongoose.connect(process.env.DB_CONNECT, function (err) {
+// mongoose.connect("mongodb://localhost:27017/antiqueAdventuresDB", function (err) {
 //     if (err) {
 //         console.log("Error: " + err);
 //     } else {
 //         console.log("Connected to Database")
 //     }
 // });
+// Live DB
+mongoose.connect(process.env.DB_CONNECT, function (err) {
+    if (err) {
+        console.log("Error: " + err);
+    } else {
+        console.log("Connected to Database")
+    }
+});
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

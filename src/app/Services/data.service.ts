@@ -13,7 +13,7 @@ export class DataService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private localUrl = 'http://localhost:3000/';
-  private liveUrl = 'https://antique-adventures.herokuapp.com/';
+  private liveUrl = 'https://antique-adventures-v2.herokuapp.com/';
   User: UserDataModel;
   Antique: AntiqueDataModel;
   selectedItemId: String = '';

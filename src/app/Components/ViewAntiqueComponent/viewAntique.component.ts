@@ -40,6 +40,11 @@ export class ViewAntiqueComponent implements OnInit {
         });
     }
 
+    public editItem() {
+        this.itemId = this.dataService.selectedItemId;
+        this.router.navigate(['/editAntique']);
+    }
+
     public backToHome() {
         this.router.navigate(['/home']);
     }

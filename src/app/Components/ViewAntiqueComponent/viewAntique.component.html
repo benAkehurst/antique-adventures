@@ -1,14 +1,50 @@
 <app-header></app-header>
 <div class="container">
-    <mat-card>
-        <mat-card>Name: {{antique.name}}</mat-card>
-        <mat-card>Artist: {{antique.artist}}</mat-card>
-        <mat-card>Category: {{antique.category}}</mat-card>
-        <mat-card>Condition: {{antique.condition}}</mat-card>
-        <mat-card>Description: {{antique.description}}</mat-card>
-        <mat-card>Image:<img class="img-fluid"src="{{antique.image}}"></mat-card>
-        <mat-card>Location: {{antique.location}}</mat-card>
-        <mat-card>Provenance: {{antique.provenance}}</mat-card>
-        <mat-card>Provenance Image: <img class="img-fluid" src='{{antique.provenanceImage}}'></mat-card>
+    <mat-card class="info-card-main">
+        <button class="btn btn-warning" (click)="editItem()">Edit Item</button>
+        <div class="info-card-container">
+            <div class="main-info-viewer">
+                <mat-card class="info-card-left-side">
+                    <h1>Item Details</h1>
+                    <p>Name: {{antique.name}}</p>
+                    <p>Artist: {{antique.artist}}</p>
+                    <p class="item-year">Year: {{antique.year}}</p>
+                    <p class="item-image">Image:
+                        <img class="img-fluid" src="{{antique.image}}">
+                    </p>
+                    <p class="item-category">Category: {{antique.category}}</p>
+                    <p class="item-sub-category">Sub Category: {{antique.subCategory}}</p>
+                    <p>Location: {{antique.location}}</p>
+                </mat-card>
+            </div>
+            <div class="other-details-container">
+                <div class="info-card-accordion-container">
+                    <mat-card class="description-card">
+                        <h1>Item Description</h1>
+                        <p>{{antique.description}}</p>
+                    </mat-card>
+                    <mat-card class="value-card">
+                        <h1>Item Value</h1>
+                        <p>Current Value: {{antique.value}}</p>
+                        <p>Bought Price: {{antique.boughtPrice}}</p>
+                        <p>Sold Price : {{antique.soldValue}}</p>
+                    </mat-card>
+                    <mat-card class="provenance-card">
+                        <h1>Provenance</h1>
+                        <p>{{antique.provenance}}</p>
+                        <img class="img-fluid" src='{{antique.provenanceImage}}'>
+                    </mat-card>
+                    <mat-card class="other-details-card">
+                        <h1>Other Details</h1>
+                        <mat-card>Condition: {{antique.condition}}</mat-card>
+                        <mat-card>Location: {{antique.location}}</mat-card>
+                        <mat-card>Dimensions: H: {{antique.height}} x W:{{antique.width}} x D: {{antique.depth}}</mat-card>
+                        <mat-card>Added To Database: {{antique.createdAt | date: 'shortDate'}}</mat-card>
+                        <mat-card>Updated Last: {{antique.updatedAt | date: 'shortDate'}}</mat-card>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
     </mat-card>
 </div>

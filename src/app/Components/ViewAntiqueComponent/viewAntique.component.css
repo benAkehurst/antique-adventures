@@ -1,0 +1,21 @@
+.info-card-main {
+    margin-top: 40px;
+}
+
+mat-card {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.main-info-viewer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.info-card-left-side {
+    align-self: flex-start;
+}
+
+.item-image {
+}

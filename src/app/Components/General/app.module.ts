@@ -24,6 +24,7 @@ import { ViewAntiqueComponent } from '../ViewAntiqueComponent/viewAntique.compon
 // Services
 import { DataService } from '../../Services/data.service';
 import { FilterPipe } from '../../Pipes/data-filter.pipe';
+import { FilterCategoryPipe } from '../../Pipes/category-filter.pipe';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from './../../../environments/environment.prod';
@@ -41,6 +42,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegisterComponent,
     HomeComponent,
     FilterPipe,
+    FilterCategoryPipe,
     NewAntiqueComponent,
     EditAntiqueComponent,
     ViewAntiqueComponent

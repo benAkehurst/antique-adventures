@@ -30,6 +30,17 @@ loggedIn: Boolean = false;
 queryString: String = '';
 antiques: Array<any> = [];
 p: Number = 1;
+categories = [
+  { id: 1, category: 'Paintings / Prints' },
+  { id: 2, category: 'Glass' },
+  { id: 3, category: 'Bronze' },
+  { id: 4, category: 'Ceramics' },
+  { id: 5, category: 'Jewellery' },
+  { id: 6, category: 'Philatelic' },
+  { id: 7, category: 'Numismatic' },
+];
+selectedFilter: String = '';
+
 
 ngOnInit() {
   this.getAllAntiques();

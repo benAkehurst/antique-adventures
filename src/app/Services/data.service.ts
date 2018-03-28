@@ -13,6 +13,7 @@ export class DataService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private localUrl = 'http://localhost:3000/';
+  private liveUrl = 'https://antique-adventures.herokuapp.com';
   User: UserDataModel;
   Antique: AntiqueDataModel;
   selectedItemId: String = '';
@@ -32,7 +33,7 @@ export class DataService {
     */
     registerUser() {
       return this.http
-      .post(this.localUrl + 'registerUser', { data: this.User }, { headers: this.headers })
+      .post(this.liveUrl + 'registerUser', { data: this.User }, { headers: this.headers })
       .map(res => res.json());
     }
 
@@ -42,7 +43,7 @@ export class DataService {
     */
     loginUser() {
       return this.http
-      .post(this.localUrl + 'login', { data: this.User }, { headers: this.headers })
+      .post(this.liveUrl + 'login', { data: this.User }, { headers: this.headers })
       .map(res => res.json());
     }
 
@@ -52,7 +53,7 @@ export class DataService {
         user: userId
       };
       return this.http
-        .post(this.localUrl + 'getProfile', {data: dataObj}, { headers: this.headers })
+        .post(this.liveUrl + 'getProfile', {data: dataObj}, { headers: this.headers })
         .map(res => res.json());
     }
   //
@@ -73,7 +74,7 @@ export class DataService {
         antique: antiqueId
       };
       return this.http
-        .post(this.localUrl + 'getAntique', { data: dataObj }, { headers: this.headers })
+        .post(this.liveUrl + 'getAntique', { data: dataObj }, { headers: this.headers })
         .map(res => res.json());
     }
 
@@ -85,7 +86,7 @@ export class DataService {
         antiqueValue: itemValObj
       };
       return this.http
-        .post(this.localUrl + 'saveNewAntique', { data: dataObj }, { headers: this.headers })
+        .post(this.liveUrl + 'saveNewAntique', { data: dataObj }, { headers: this.headers })
         .map(res => res.json());
     }
 
@@ -95,7 +96,7 @@ export class DataService {
         antiqueValue: itemValObj
       };
       return this.http
-        .post(this.localUrl + 'editAntique/' + this.selectedItemId, { data: dataObj }, { headers: this.headers })
+        .post(this.liveUrl + 'editAntique/' + this.selectedItemId, { data: dataObj }, { headers: this.headers })
         .map(res => res.json());
     }
 

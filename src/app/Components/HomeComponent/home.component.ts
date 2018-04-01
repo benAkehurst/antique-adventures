@@ -54,7 +54,7 @@ public getAllAntiques() {
       error => {
         this.errors = error;
         console.log(error);
-        this.openSwal('Error', 'Sorry, we couldn\'t get any reccomendations right now');
+        this.openSwal('Error', 'The database is empty at the moment, try adding an item');
       });
 }
 

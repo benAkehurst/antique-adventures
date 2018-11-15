@@ -8,8 +8,7 @@ The base version of the app was built with the tutorial from (https://scotch.io/
 
 ## Development server
 
-Run `npm run build` for a dev server. Navigate to `http://localhost:3000/`.
-Each time you make any changes, to see them in effect on the dev server, you need to run the `npm run build` command.
+To run the project locally, first start mongoDB on your local machine. Then inside a teminal window at the root directory run `node server.js`. When the DB connects Navigate to `http://localhost:3000/`.
 
 ## Build
 
